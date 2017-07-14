@@ -15,7 +15,7 @@ class Board
 {
 
 public:
-    void MovePiece(uint8_t Old_x, uint8_t Old_y, uint8_t New_x, uint8_t New_y);
+    void MovePiece(Piece* Unit, uint8_t New_x, uint8_t New_y);
 
     Square Squares[X_LIMIT*Y_LIMIT];
     

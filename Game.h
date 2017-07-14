@@ -12,7 +12,7 @@ class Game
 
 public:
     Game(void);
-    void MovePiece(uint8_t Old_x, uint8_t Old_y, uint8_t New_x, uint8_t New_y);
+    void MovePiece(Piece* Unit, uint8_t New_x, uint8_t New_y);
 
 private:
     void InitializeBoard(void);

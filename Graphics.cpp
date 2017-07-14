@@ -1,5 +1,5 @@
 #include <iostream>
-#include <windows.h>
+//#include <windows.h>
 #include "Graphics.h"
 #include "Game.h"
 #include "Board.h"
@@ -14,37 +14,37 @@ Graphics::Graphics(void) :
 
 void Graphics::Update(Board CurrBoard)
 {
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    CONSOLE_SCREEN_BUFFER_INFO Info;
-    GetConsoleScreenBufferInfo(hConsole, &Info);
-    WORD Attributes = Info.wAttributes;
+   // HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+   // CONSOLE_SCREEN_BUFFER_INFO Info;
+   // GetConsoleScreenBufferInfo(hConsole, &Info);
+   // WORD Attributes = Info.wAttributes;
 
     _Turn++;
 
-    cout << "*******************************************************" << endl;
-    cout << "                   CHESS - TURN # " << _Turn << endl;
-    cout << "*******************************************************" << endl;
-    cout << endl << "***|-----|-----|-----|-----|-----|-----|-----|-----|***" << endl << endl;
+    cout << "*************************************************" << endl;
+    cout << "                CHESS - TURN # " << _Turn << endl;
+    cout << "*************************************************" << endl;
+    //cout << endl << "***|-----|-----|-----|-----|-----|-----|-----|-----|***" << endl << endl;
 
-    for (uint8_t y = 0; y < X_LIMIT; ++y)
+    for (uint8_t y = 0; y < Y_LIMIT; ++y)
     {
-        cout << "***";
+        //cout << "***";
 
-        for (uint8_t x = 0; x < Y_LIMIT; ++x)
+        for (uint8_t x = 0; x < X_LIMIT; ++x)
         {
-            if (CurrBoard.Squares[x + y*X_LIMIT].Occupied)
+            if (CurrBoard.Squares[x + y * X_LIMIT].Occupied)
             {
-                SetConsoleTextAttribute(hConsole, Attributes);
+               // SetConsoleTextAttribute(hConsole, Attributes);
 
                 cout << "|";
 
-                if (CurrBoard.Squares[x + y*X_LIMIT].PieceHere->GetColor() == White)
+                if (CurrBoard.Squares[x + y * X_LIMIT].PieceHere->GetColor() == White)
                 {
-                    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+                   // SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
                 }
-                else if (CurrBoard.Squares[x + y*X_LIMIT].PieceHere->GetColor()== Black)
+                else if (CurrBoard.Squares[x + y * X_LIMIT].PieceHere->GetColor() == Black)
                 {
-                    SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
+                    //SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
                 }
 
                 switch (CurrBoard.Squares[x + y * X_LIMIT].PieceHere->GetType())
@@ -81,18 +81,17 @@ void Graphics::Update(Board CurrBoard)
             {
                 cout << "|  .  ";
             }
-
         }
 
-        SetConsoleTextAttribute(hConsole, Attributes);
+       // SetConsoleTextAttribute(hConsole, Attributes);
 
-        cout << "|***" << endl;
-        cout << endl << "***|-----|-----|-----|-----|-----|-----|-----|-----|***" << endl << endl;
+        cout << "|" << endl;//***" << endl;
+        cout << endl ;//<< "***|-----|-----|-----|-----|-----|-----|-----|-----|***" << endl << endl;
     }
 
-    cout << "*******************************************************" << endl;
-    cout << "*******************************************************" << endl;
-    cout << "*******************************************************" << endl;
+    cout << "*************************************************" << endl;
+    cout << "*************************************************" << endl;
+    cout << "*************************************************" << endl;
 
     cout << endl;
     cout << endl;

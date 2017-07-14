@@ -20,6 +20,7 @@ public:
     uint8_t GetY();
     PieceType GetType();
     PlayerColor GetColor();
+    bool IsAlive();
 
 private: 
     PieceType   _Type;

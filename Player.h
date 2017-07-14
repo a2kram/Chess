@@ -26,8 +26,8 @@ public:
     void Move(uint8_t Depth, Board* StartingBoard, Piece Pieces[PLAYER_NUM_PIECES]);
 
 private:
-    bool CheckLegalMove(uint8_t x, uint8_t y, Board CurrBoard);
-    uint32_t Evaluate(Board CurrBoard, MoveType CurrMove);
+    bool CheckLegalMove(uint8_t x, uint8_t y, Board* CurrBoard);
+    int32_t Evaluate(Board* CurrBoard, MoveType* CurrMove);
 
     std::string _Name;
     PlayerColor _Color;

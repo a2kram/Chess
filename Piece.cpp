@@ -19,7 +19,7 @@ Piece::Piece(PieceType Type, uint8_t x, uint8_t y, PlayerColor Color, Game* Game
     _x = x;
     _y = y;
 
-    GameObj->MovePiece(_x, _y, x, y);
+    GameObj->MovePiece(this, x, y);
 }
 
 void Piece::KillPiece(void)
@@ -58,4 +58,9 @@ PieceType Piece::GetType()
 PlayerColor Piece::GetColor()
 {
     return _Color;
+}
+
+bool Piece::IsAlive()
+{
+    return _Alive;
 }

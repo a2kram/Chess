@@ -1,9 +1,14 @@
+#include <unistd.h>
+#include <iostream>
+
 #include "Globals.h"
 #include "Game.h"
 #include "Player.h"
 #include "Piece.h"
 #include "Graphics.h"
 #include "Board.h"
+
+using namespace std;
 
 Game::Game(void) 
     : _Winner(NoColor), _Turn(White)
@@ -37,6 +42,8 @@ void Game::NextTurn(void)
         _PlayerBlack.Move(HARD_DEPTH, &_Board, _PlayerArray[Black]);
         _Turn = White;
     }
+
+    sleep(1);
 }
 
 void Game::InitializeBoard(void)
@@ -45,16 +52,10 @@ void Game::InitializeBoard(void)
     {
         _PlayerArray[White][i] = Piece(Type[i], WhiteStartingX[i], WhiteStartingY[i], White, this);
         _PlayerArray[Black][i] = Piece(Type[i], BlackStartingX[i], BlackStartingY[i], Black, this);
-
-        _Board.Squares[WhiteStartingX[i] + WhiteStartingY[i] * X_LIMIT].Occupied = true;
-        _Board.Squares[WhiteStartingX[i] + WhiteStartingY[i] * X_LIMIT].PieceHere = &_PlayerArray[White][i];
-
-        _Board.Squares[BlackStartingX[i] + BlackStartingY[i] * X_LIMIT].Occupied = true;
-        _Board.Squares[BlackStartingX[i] + BlackStartingY[i] * X_LIMIT].PieceHere = &_PlayerArray[Black][i];;
     }
 }
 
-void Game::MovePiece(uint8_t Old_x, uint8_t Old_y, uint8_t New_x, uint8_t New_y)
+void Game::MovePiece(Piece* Unit, uint8_t New_x, uint8_t New_y)
 {
-    _Board.MovePiece(Old_x, Old_y, New_x, New_y);
+    _Board.MovePiece(Unit, New_x, New_y);
 }
